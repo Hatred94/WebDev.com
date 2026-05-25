@@ -1,0 +1,17 @@
+{
+  "name": "webdev-backend",
+  "version": "1.0.0",
+  "description": "Backend для сайта веб-разработки: SQLite, авторизация, роли, уроки и тесты",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "init-db": "node db.js",
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "sql.js": "^1.10.0",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.0",
+    "cookie-parser": "^1.4.6"
+  }
+}
