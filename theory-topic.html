@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Теория — Веб-разработка для начинающих</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <script>
+  (function(){ try { var q=window.location.search,p=new URLSearchParams(q),t=p.get('theme')||localStorage.getItem('webdev_theme'); t=(t==='light'||t==='dark')?t:'dark'; localStorage.setItem('webdev_theme',t); document.documentElement.setAttribute('data-theme',t); document.body.setAttribute('data-theme',t); } catch(e){} })();
+  </script>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo logo-icon"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3L4 12l4 9"/><path d="M16 3l4 9-4 9"/><path d="M12 5v14"/></svg></span><span class="logo-text">WebDev</span></a>
+      <ul class="nav-list">
+        <li><a href="index.html" data-nav="home" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></span><span class="nav-label">Главная</span></a></li>
+        <li><a href="theory.html" data-nav="theory" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M8 7h8M8 11h6M8 15h4"/></svg></span><span class="nav-label">Теория</span></a></li>
+        <li><a href="tests.html" data-nav="tests" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span><span class="nav-label">Тесты</span></a></li>
+        <li><a href="lessons.html" data-nav="lessons" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span><span class="nav-label">Уроки</span></a></li>
+        <li><a href="help.html" data-nav="help" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 115.83 1c-.33.95-1.32 1.36-1.82 1.75A1.8 1.8 0 0012.5 13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><span class="nav-label">Справка</span></a></li>
+        <li><a href="cabinet.html" data-nav="cabinet" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="nav-label">Кабинет</span></a></li>
+      </ul>
+      <div class="nav-right">
+        <span class="auth-nav-wrap" id="auth-nav"></span>
+        <button type="button" class="theme-toggle" aria-label="Тема">
+          <span class="theme-toggle-icon theme-icon-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+          <span class="theme-toggle-icon theme-icon-light" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+          <span class="theme-toggle-text">Тёмная</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main content-page theory-topic-page">
+    <article class="theory-article" id="theory-article"><p class="theory-loading">Загрузка...</p></article>
+    <div class="theory-topic-cta" id="theory-topic-cta" style="display:none;">
+      <div class="theory-cta-box theory-cta-box-flex">
+        <h2>Закрепите материал</h2>
+        <p>Попробуйте интерактивный урок с проверкой кода и пройдите тест по теме.</p>
+        <div class="theory-cta-actions">
+          <a href="#" class="btn theory-cta-btn theory-cta-lesson" id="theory-cta-lesson" style="display:none;">Интерактивный урок</a>
+          <a href="#" class="btn btn-primary theory-cta-btn theory-cta-test" id="theory-cta-link" style="display:none;">Пройти тест</a>
+        </div>
+      </div>
+    </div>
+    <div class="theory-topic-next-wrap" id="theory-topic-next-wrap" style="display:none;">
+      <a href="#" class="btn btn-primary theory-topic-next-btn" id="theory-topic-next">Следующий урок →</a>
+    </div>
+    <p class="theory-back"><a href="theory.html">← Все темы теории</a></p>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="footer-logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3L4 12l4 9"/><path d="M16 3l4 9-4 9"/><path d="M12 5v14"/>
+            </svg>
+          </span>
+          <span class="footer-logo-text">WebDev</span>
+        </div>
+        <p class="footer-tagline">Учебный мини‑сервис по основам веб‑разработки.</p>
+      </div>
+      <div class="footer-contacts">
+        <p class="footer-contacts-title">Связаться с автором</p>
+        <a href="mailto:sidelnikoff@gmail.com" class="footer-contact-link">sidelnikoff@gmail.com</a>
+        <span class="footer-contact-link">@what_is_creator_desire в Telegram</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© WebDev, учебный проект.</span>
+      <a href="privacy.html" class="footer-legal-link">Политика обработки персональных данных</a>
+    </div>
+  </footer>
+
+  <script src="js/sqlite-db.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/theory-data.js"></script>
+  <script src="js/theory-topic.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

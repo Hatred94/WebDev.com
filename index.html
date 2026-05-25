@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Веб-разработка для начинающих</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <script>
+  (function(){ try { var q=window.location.search,p=new URLSearchParams(q),t=p.get('theme')||localStorage.getItem('webdev_theme'); t=(t==='light'||t==='dark')?t:'dark'; localStorage.setItem('webdev_theme',t); document.documentElement.setAttribute('data-theme',t); document.body.setAttribute('data-theme',t); } catch(e){} })();
+  </script>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo logo-icon">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3L4 12l4 9"/><path d="M16 3l4 9-4 9"/><path d="M12 5v14"/></svg></span>
+        <span class="logo-text">WebDev</span>
+      </a>
+      <ul class="nav-list">
+        <li><a href="index.html" data-nav="home" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></span><span class="nav-label">Главная</span></a></li>
+        <li><a href="theory.html" data-nav="theory" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M8 7h8M8 11h6M8 15h4"/></svg></span><span class="nav-label">Теория</span></a></li>
+        <li><a href="tests.html" data-nav="tests" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span><span class="nav-label">Тесты</span></a></li>
+        <li><a href="lessons.html" data-nav="lessons" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span><span class="nav-label">Уроки</span></a></li>
+        <li><a href="help.html" data-nav="help" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 115.83 1c-.33.95-1.32 1.36-1.82 1.75A1.8 1.8 0 0012.5 13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><span class="nav-label">Справка</span></a></li>
+        <li><a href="cabinet.html" data-nav="cabinet" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="nav-label">Кабинет</span></a></li>
+      </ul>
+      <div class="nav-right">
+        <span class="auth-nav-wrap" id="auth-nav"></span>
+        <button type="button" class="theme-toggle" aria-label="Тема">
+          <span class="theme-toggle-icon theme-icon-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+          <span class="theme-toggle-icon theme-icon-light" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+          <span class="theme-toggle-text">Тёмная</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="home-hero-banner" aria-label="Главный баннер">
+    <div class="home-hero-banner-bg" aria-hidden="true"></div>
+    <div class="home-hero-banner-inner">
+      <p class="home-hero-banner-kicker">Бесплатно · Без установки · Сразу в браузере</p>
+      <h1 class="home-hero-banner-title">Пишите код.<br><span class="home-hero-banner-accent">Смотрите результат.</span></h1>
+      <p class="home-hero-banner-lead">HTML, CSS и JavaScript — по шагам: теория, интерактивные уроки с редактором и тесты. Всё в одном окне браузера.</p>
+      <div class="home-hero-banner-actions">
+        <a href="lessons.html" class="btn btn-primary btn-hero">Начать с уроков</a>
+        <a href="theory.html" class="btn btn-hero-outline btn-hero">К теории</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="main main-home">
+    <section class="home-section home-hiw" aria-labelledby="hiw-title">
+      <h2 class="section-title section-title-hiw" id="hiw-title">Как это работает</h2>
+      <div class="hiw-showcase" role="list">
+        <article class="hiw-card hiw-card--dark hiw-card--low" role="listitem">
+          <span class="hiw-num" aria-hidden="true">01</span>
+          <span class="hiw-arrow" aria-hidden="true" title="">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </span>
+          <h3>Выберите урок</h3>
+          <p>В разделе «Уроки» откройте любой урок из сетки — от первой HTML-страницы до счётчика на JavaScript.</p>
+        </article>
+        <article class="hiw-card hiw-card--muted hiw-card--high hiw-card--tilt-l" role="listitem">
+          <span class="hiw-num hiw-num--on-light" aria-hidden="true">02</span>
+          <span class="hiw-arrow hiw-arrow--on-light" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </span>
+          <h3>Пишите код</h3>
+          <p>Редактор с подсветкой синтаксиса прямо в браузере. Ничего устанавливать не нужно.</p>
+        </article>
+        <article class="hiw-card hiw-card--accent hiw-card--high hiw-card--tilt-r" role="listitem">
+          <span class="hiw-num hiw-num--accent" aria-hidden="true">03</span>
+          <span class="hiw-arrow hiw-arrow--accent" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </span>
+          <h3>Смотрите результат</h3>
+          <p>Нажмите «Запустить» — превью справа. Меняйте код и сразу проверяйте, как это выглядит на странице.</p>
+        </article>
+        <article class="hiw-card hiw-card--dark hiw-card--low" role="listitem">
+          <span class="hiw-num" aria-hidden="true">04</span>
+          <span class="hiw-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </span>
+          <h3>Теория и тесты</h3>
+          <p>Читайте темы в разделе «Теория» и закрепляйте материал тестами — всё связано с практикой в уроках.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section home-strip home-strip--fullbleed" aria-label="Ключевые темы курса">
+      <div class="home-strip-inner">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Редактор в браузере</span>
+        <span>Без установки</span><span>Уроки по шагам</span><span>Тесты</span><span>Теория</span>
+        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Редактор в браузере</span>
+        <span>Без установки</span><span>Уроки по шагам</span><span>Тесты</span><span>Теория</span>
+      </div>
+    </section>
+
+    <section class="home-section home-quote">
+      <blockquote class="home-quote-block">
+        <p>Лучший способ научиться — писать код самому и сразу видеть, что получается.</p>
+        <footer>— здесь вы делаете именно так</footer>
+      </blockquote>
+    </section>
+
+    <section class="home-section home-can">
+      <h2 class="section-title">Что вы сможете сделать после курса</h2>
+      <div class="cards-grid home-can-grid">
+        <div class="home-card">
+          <span class="home-card-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></span>
+          <h3>Сверстать страницу</h3>
+          <p>Заголовки, абзацы, списки, ссылки и картинки — соберёте структуру любой страницы.</p>
+        </div>
+        <div class="home-card">
+          <span class="home-card-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M8 8l4-4 4 4"/><path d="M8 16l4 4 4-4"/><rect x="2" y="12" width="6" height="8" rx="1"/><rect x="16" y="4" width="6" height="8" rx="1"/></svg></span>
+          <h3>Оформить всё стилями</h3>
+          <p>Цвета, шрифты, отступы, кнопки и сетки — страница будет выглядеть аккуратно и современно.</p>
+        </div>
+        <div class="home-card">
+          <span class="home-card-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><path d="M10 21H6a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M9 3v18"/><path d="M15 3v18"/></svg></span>
+          <h3>Добавить интерактивность</h3>
+          <p>Кнопки, счётчики, реакция на клики — оживите страницу с помощью JavaScript.</p>
+        </div>
+        <div class="home-card">
+          <span class="home-card-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg></span>
+          <h3>Собрать свой мини-сайт</h3>
+          <p>Портфолио, визитка или лендинг — всё из тех же кирпичиков: HTML, CSS и JS.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-for-who">
+      <h2 class="section-title">Для кого этот курс</h2>
+      <div class="who-grid">
+        <div class="who-card">
+          <span class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+          <h3>Новички</h3>
+          <p>Никогда не писали код? Начните с простых тегов и за несколько уроков соберёте первую страницу.</p>
+        </div>
+        <div class="who-card">
+          <span class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-9-9"/><path d="M21 3v9h-9"/></svg></span>
+          <h3>Переключающиеся</h3>
+          <p>Хотите вспомнить HTML и CSS или подтянуть базу перед фреймворками — здесь всё по полочкам.</p>
+        </div>
+        <div class="who-card">
+          <span class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0018 8 6 6 0 006 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 018.91 14"/><path d="M17 21a5 5 0 01-10 0"/></svg></span>
+          <h3>Любопытные</h3>
+          <p>Интересно, как устроены сайты? Разбирайте примеры в редакторе и экспериментируйте.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-topics">
+      <h2 class="section-title">Что вы изучите</h2>
+      <div class="topics-strip">
+        <span class="topic-chip">HTML</span>
+        <span class="topic-chip">CSS</span>
+        <span class="topic-chip">JavaScript</span>
+        <span class="topic-chip">Flexbox</span>
+        <span class="topic-chip">Ссылки и списки</span>
+        <span class="topic-chip">Стили и цвета</span>
+        <span class="topic-chip">События и кнопки</span>
+        <span class="topic-chip">Счётчики</span>
+      </div>
+    </section>
+
+    <section class="home-section home-tips">
+      <h2 class="section-title">Три совета новичкам</h2>
+      <div class="steps-row">
+        <div class="step-plate">
+          <span class="step-num">1</span>
+          <h3>Пишите код руками</h3>
+          <p>Не копируйте готовое — набирайте сами. Так лучше запоминается синтаксис и быстрее появляется уверенность.</p>
+        </div>
+        <div class="step-plate">
+          <span class="step-num">2</span>
+          <h3>Ломайте и чините</h3>
+          <p>Специально измените код и посмотрите, что сломалось. Поиск ошибок — один из главных навыков разработчика.</p>
+        </div>
+        <div class="step-plate">
+          <span class="step-num">3</span>
+          <h3>Учитесь по 15–20 минут в день</h3>
+          <p>Регулярность важнее марафонов. Небольшие сессии каждый день дают больший эффект, чем редкие многочасовые.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-cards">
+      <h2 class="section-title">Почему удобно учиться здесь</h2>
+      <div class="cards-grid">
+        <div class="home-card">
+          <span class="home-card-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01"/><path d="M8 12h8"/><path d="M8 16h5"/></svg></span>
+          <h3>Всё в браузере</h3>
+          <p>Не нужно ставить редактор или сервер — достаточно открыть сайт и начать писать код.</p>
+        </div>
+        <div class="home-card">
+          <span class="home-card-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-9-9"/><path d="M21 3v9h-9"/></svg></span>
+          <h3>Сразу видно результат</h3>
+          <p>Один клик — и ваш HTML, CSS и JS отображаются в превью. Удобно экспериментировать.</p>
+        </div>
+        <div class="home-card">
+          <span class="home-card-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M8 7h8M8 11h6M8 15h4"/></svg></span>
+          <h3>Теория и практика</h3>
+          <p>Читайте справочник и закрепляйте материал уроками и тестами.</p>
+        </div>
+        <div class="home-card">
+          <span class="home-card-icon-svg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></span>
+          <h3>Отмечайте прогресс</h3>
+          <p>Пройденные уроки сохраняются — можно продолжить с того места, где остановились.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-faq">
+      <h2 class="section-title">Частые вопросы</h2>
+      <p class="home-faq-intro">Нажмите на вопрос — откроется ответ.</p>
+      <div class="home-faq-list home-faq-accordion">
+        <details class="home-faq-item">
+          <summary class="home-faq-summary">Нужен ли опыт программирования?</summary>
+          <div class="home-faq-panel">
+            <p>Нет. Курс рассчитан на тех, кто только начинает. Мы идём от простого к сложному: сначала теги и стили, потом логика на JavaScript.</p>
+          </div>
+        </details>
+        <details class="home-faq-item">
+          <summary class="home-faq-summary">Что нужно для занятий?</summary>
+          <div class="home-faq-panel">
+            <p>Только браузер и интернет. Редактор кода встроен в сайт — ничего устанавливать не нужно. Подойдёт компьютер или планшет с нормальным экраном.</p>
+          </div>
+        </details>
+        <details class="home-faq-item">
+          <summary class="home-faq-summary">Нужна ли регистрация?</summary>
+          <div class="home-faq-panel">
+            <p>Теорию, уроки и тесты можно проходить без аккаунта. Регистрация нужна, если хотите сохранять прогресс по урокам и результатам тестов в личном кабинете на разных устройствах (при работе через сервер).</p>
+          </div>
+        </details>
+        <details class="home-faq-item">
+          <summary class="home-faq-summary">Как сохраняется прогресс?</summary>
+          <div class="home-faq-panel">
+            <p>Пройденные уроки и баллы за тесты могут сохраняться в браузере или на сервере — в зависимости от того, как вы открываете сайт. В личном кабинете видно сводка по урокам и тестам.</p>
+          </div>
+        </details>
+        <details class="home-faq-item">
+          <summary class="home-faq-summary">Что делать, если код в уроке не запускается или проверка не проходит?</summary>
+          <div class="home-faq-panel">
+            <p>Сначала нажмите «Запустить», чтобы превью обновилось. Проверьте кавычки, теги и скобки — частая ошибка в одном символе. Прочитайте текст задания ещё раз и сравните с примером. Если открыли урок из темы теории, можно вернуться к теории по ссылке «назад».</p>
+          </div>
+        </details>
+        <details class="home-faq-item">
+          <summary class="home-faq-summary">Удобно ли учиться с телефона?</summary>
+          <div class="home-faq-panel">
+            <p>Читать теорию и проходить тесты с телефона вполне удобно. Редактор кода в уроках рассчитан на широкую клавиатуру — для серьёзной практики лучше планшет или компьютер.</p>
+          </div>
+        </details>
+        <details class="home-faq-item">
+          <summary class="home-faq-summary">Что дальше после этого курса?</summary>
+          <div class="home-faq-panel">
+            <p>После основ HTML, CSS и JavaScript можно переходить к фреймворкам (React, Vue), серверной части (Node.js), базам данных или углубляться в вёрстку, доступность и производительность.</p>
+          </div>
+        </details>
+        <details class="home-faq-item">
+          <summary class="home-faq-summary">Выдаётся ли сертификат?</summary>
+          <div class="home-faq-panel">
+            <p>Это учебный проект без официальной аккредитации: сертификат государственного образца не выдаётся. Вы можете использовать пройденные уроки и тесты как часть портфолио при самообучении.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="home-section home-cta">
+      <div class="cta-block">
+        <h2>Готовы написать первую страницу?</h2>
+        <p>Переходите к интерактивным урокам — первый урок займёт пару минут.</p>
+        <a href="lessons.html" class="btn btn-primary btn-hero">Перейти к урокам</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="footer-logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3L4 12l4 9"/><path d="M16 3l4 9-4 9"/><path d="M12 5v14"/>
+            </svg>
+          </span>
+          <span class="footer-logo-text">WebDev</span>
+        </div>
+        <p class="footer-tagline">Учебный мини‑сервис по основам веб‑разработки.</p>
+      </div>
+      <div class="footer-contacts">
+        <p class="footer-contacts-title">Связаться с автором</p>
+        <a href="mailto:sidelnikoff@gmail.com" class="footer-contact-link">sidelnikoff@gmail.com</a>
+        <span class="footer-contact-link">@what_is_creator_desire в Telegram</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© WebDev, учебный проект.</span>
+      <a href="privacy.html" class="footer-legal-link">Политика обработки персональных данных</a>
+    </div>
+  </footer>
+
+  <script src="js/sqlite-db.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

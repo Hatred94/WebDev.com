@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Вход — WebDev</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <script>
+  (function(){ try { var q=window.location.search,p=new URLSearchParams(q),t=p.get('theme')||localStorage.getItem('webdev_theme'); t=(t==='light'||t==='dark')?t:'dark'; localStorage.setItem('webdev_theme',t); document.documentElement.setAttribute('data-theme',t); document.body.setAttribute('data-theme',t); } catch(e){} })();
+  </script>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo logo-icon">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3L4 12l4 9"/><path d="M16 3l4 9-4 9"/><path d="M12 5v14"/></svg></span>
+        <span class="logo-text">WebDev</span>
+      </a>
+      <ul class="nav-list">
+        <li><a href="index.html" data-nav="home" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></span><span class="nav-label">Главная</span></a></li>
+        <li><a href="theory.html" data-nav="theory" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M8 7h8M8 11h6M8 15h4"/></svg></span><span class="nav-label">Теория</span></a></li>
+        <li><a href="tests.html" data-nav="tests" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span><span class="nav-label">Тесты</span></a></li>
+        <li><a href="lessons.html" data-nav="lessons" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span><span class="nav-label">Уроки</span></a></li>
+        <li><a href="help.html" data-nav="help" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 115.83 1c-.33.95-1.32 1.36-1.82 1.75A1.8 1.8 0 0012.5 13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><span class="nav-label">Справка</span></a></li>
+        <li><a href="cabinet.html" data-nav="cabinet" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="nav-label">Кабинет</span></a></li>
+      </ul>
+      <div class="nav-right">
+        <span class="auth-nav-wrap" id="auth-nav"></span>
+        <button type="button" class="theme-toggle" aria-label="Тема">
+          <span class="theme-toggle-icon theme-icon-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+          <span class="theme-toggle-icon theme-icon-light" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+          <span class="theme-toggle-text">Тёмная</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main content-page auth-page">
+    <div class="auth-wrapper">
+      <div class="auth-split">
+        <div class="auth-split-main">
+          <div class="auth-box">
+            <div class="auth-box-header">
+              <div class="auth-logo-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3L4 12l4 9"/><path d="M16 3l4 9-4 9"/><path d="M12 5v14"/></svg>
+              </div>
+              <h1>Вход в аккаунт</h1>
+              <p class="auth-hint">Прогресс по урокам и тестам сохраняется в вашем аккаунте.</p>
+            </div>
+            <div class="auth-tabs">
+              <button type="button" class="auth-tab active" data-tab="login">Вход</button>
+              <button type="button" class="auth-tab" data-tab="register">Регистрация</button>
+            </div>
+            <form id="auth-form-login" class="auth-form">
+              <label class="auth-label">Логин <input type="text" name="login" required autocomplete="username" placeholder="Введите логин"></label>
+              <label class="auth-label">Пароль <input type="password" name="password" required autocomplete="current-password" placeholder="Введите пароль"></label>
+              <p id="auth-error-login" class="auth-error" role="alert"></p>
+              <button type="submit" class="btn btn-primary auth-submit-btn">Войти</button>
+            </form>
+            <form id="auth-form-register" class="auth-form" style="display:none;">
+              <label class="auth-label">Логин <input type="text" name="login" required minlength="2" autocomplete="username" placeholder="Не короче 2 символов"></label>
+              <label class="auth-label">Пароль <input type="password" name="password" required minlength="4" autocomplete="new-password" placeholder="Не короче 4 символов"></label>
+              <label class="auth-consent">
+                <input type="checkbox" name="pdConsent" required>
+                <span>Я даю согласие на <a href="privacy.html" target="_blank" rel="noopener noreferrer">обработку персональных данных</a> в соответствии с политикой</span>
+              </label>
+              <p id="auth-error-register" class="auth-error" role="alert"></p>
+              <button type="submit" class="btn btn-primary auth-submit-btn">Зарегистрироваться</button>
+            </form>
+          </div>
+        </div>
+        <div class="auth-split-visual" aria-hidden="true">
+          <div class="auth-visual-scene">
+            <div class="auth-visual-grid"></div>
+            <div class="auth-visual-orb auth-visual-orb-a"></div>
+            <div class="auth-visual-orb auth-visual-orb-b"></div>
+            <div class="auth-visual-mark">
+              <span class="auth-visual-rings"></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 3L4 12l4 9"/><path d="M16 3l4 9-4 9"/><path d="M12 5v14"/>
+                <path d="M2 12h3M19 12h3M12 2v3M12 19v3" opacity="0.35"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="footer-logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3L4 12l4 9"/><path d="M16 3l4 9-4 9"/><path d="M12 5v14"/>
+            </svg>
+          </span>
+          <span class="footer-logo-text">WebDev</span>
+        </div>
+        <p class="footer-tagline">Учебный мини‑сервис по основам веб‑разработки.</p>
+      </div>
+      <div class="footer-contacts">
+        <p class="footer-contacts-title">Связаться с автором</p>
+        <a href="mailto:sidelnikoff@gmail.com" class="footer-contact-link">sidelnikoff@gmail.com</a>
+        <span class="footer-contact-link">@what_is_creator_desire в Telegram</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© WebDev, учебный проект.</span>
+      <a href="privacy.html" class="footer-legal-link">Политика обработки персональных данных</a>
+    </div>
+  </footer>
+
+  <script src="js/sqlite-db.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+  (function () {
+    var tabLogin = document.querySelector('.auth-tab[data-tab="login"]');
+    var tabRegister = document.querySelector('.auth-tab[data-tab="register"]');
+    var formLogin = document.getElementById('auth-form-login');
+    var formRegister = document.getElementById('auth-form-register');
+    var errLogin = document.getElementById('auth-error-login');
+    var errRegister = document.getElementById('auth-error-register');
+
+    if (window.location.hash === '#register') {
+      if (tabLogin) tabLogin.classList.remove('active');
+      if (tabRegister) tabRegister.classList.add('active');
+      if (formLogin) formLogin.style.display = 'none';
+      if (formRegister) formRegister.style.display = 'block';
+    }
+    if (tabLogin) tabLogin.addEventListener('click', function () {
+      tabLogin.classList.add('active');
+      tabRegister.classList.remove('active');
+      formLogin.style.display = 'block';
+      formRegister.style.display = 'none';
+      errLogin.textContent = '';
+    });
+    if (tabRegister) tabRegister.addEventListener('click', function () {
+      tabRegister.classList.add('active');
+      tabLogin.classList.remove('active');
+      formRegister.style.display = 'block';
+      formLogin.style.display = 'none';
+      errRegister.textContent = '';
+    });
+
+    function doLogin() {
+      errLogin.textContent = '';
+      var login = formLogin.login.value.trim();
+      var password = formLogin.password.value;
+      if (!login || !password) { errLogin.textContent = 'Введите логин и пароль'; return; }
+      // С сервера — вход через API (БД на сервере)
+      if (window.webdevApi && typeof window.webdevApi.login === 'function') {
+        window.webdevApi.login(login, password).then(function (res) {
+          if (res && res.user) {
+            sessionStorage.setItem('webdev_user', JSON.stringify(res.user));
+            var returnUrl = (new URLSearchParams(window.location.search)).get('return');
+            window.location.href = (returnUrl && /^[a-zA-Z0-9_.-]+\.html(\?.*)?(#.*)?$/.test(returnUrl)) ? returnUrl : 'cabinet.html';
+          } else { errLogin.textContent = 'Неверный логин или пароль'; }
+        }).catch(function (err) {
+          errLogin.textContent = (err && err.message) ? err.message : 'Неверный логин или пароль';
+        });
+        return;
+      }
+      // Без сервера (file://) — локальная БД в браузере
+      if (typeof window.initWebdevDb !== 'function') { errLogin.textContent = 'БД не загружена. Откройте сайт через http (сервер) или выберите файл diplom.db.'; return; }
+      window.initWebdevDb().then(function (ok) {
+        if (!ok || !window.webdevDbLogin) { errLogin.textContent = 'БД недоступна'; return; }
+        var user = window.webdevDbLogin(login, password);
+        if (user) {
+          var returnUrl = (new URLSearchParams(window.location.search)).get('return');
+          window.location.href = (returnUrl && /^[a-zA-Z0-9_.-]+\.html(\?.*)?(#.*)?$/.test(returnUrl)) ? returnUrl : 'cabinet.html';
+        } else errLogin.textContent = 'Неверный логин или пароль';
+      });
+    }
+
+    function doRegister() {
+      errRegister.textContent = '';
+      var login = formRegister.login.value.trim();
+      var password = formRegister.password.value;
+      var pdConsent = formRegister.pdConsent;
+      if (!login || login.length < 2) { errRegister.textContent = 'Логин не короче 2 символов'; return; }
+      if (!password || password.length < 4) { errRegister.textContent = 'Пароль не короче 4 символов'; return; }
+      if (!pdConsent || !pdConsent.checked) { errRegister.textContent = 'Необходимо согласие на обработку персональных данных'; return; }
+      // С сервера — регистрация через API
+      if (window.webdevApi && typeof window.webdevApi.register === 'function') {
+        window.webdevApi.register(login, password).then(function (res) {
+          if (res && res.user) {
+            sessionStorage.setItem('webdev_user', JSON.stringify(res.user));
+            var returnUrl = (new URLSearchParams(window.location.search)).get('return');
+            window.location.href = (returnUrl && /^[a-zA-Z0-9_.-]+\.html(\?.*)?(#.*)?$/.test(returnUrl)) ? returnUrl : 'cabinet.html';
+          } else { errRegister.textContent = 'Ошибка регистрации'; }
+        }).catch(function (err) {
+          errRegister.textContent = (err && err.message) ? err.message : 'Ошибка регистрации';
+        });
+        return;
+      }
+      // Без сервера — локальная БД
+      if (typeof window.initWebdevDb !== 'function') { errRegister.textContent = 'БД не загружена.'; return; }
+      window.initWebdevDb().then(function (ok) {
+        if (!ok || !window.webdevDbRegister) { errRegister.textContent = 'БД недоступна'; return; }
+        var user = window.webdevDbRegister(login, password);
+        if (user) {
+          var returnUrl = (new URLSearchParams(window.location.search)).get('return');
+          window.location.href = (returnUrl && /^[a-zA-Z0-9_.-]+\.html(\?.*)?(#.*)?$/.test(returnUrl)) ? returnUrl : 'cabinet.html';
+        } else errRegister.textContent = 'Такой логин уже занят';
+      });
+    }
+
+    formLogin.addEventListener('submit', function (e) { e.preventDefault(); doLogin(); });
+    formRegister.addEventListener('submit', function (e) { e.preventDefault(); doRegister(); });
+  })();
+  </script>
+</body>
+</html>

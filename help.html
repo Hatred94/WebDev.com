@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Справочник по сайту — WebDev</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <script>
+  (function(){ try { var q=window.location.search,p=new URLSearchParams(q),t=p.get('theme')||localStorage.getItem('webdev_theme'); t=(t==='light'||t==='dark')?t:'dark'; localStorage.setItem('webdev_theme',t); document.documentElement.setAttribute('data-theme',t); document.body.setAttribute('data-theme',t); } catch(e){} })();
+  </script>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo logo-icon">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3L4 12l4 9"/><path d="M16 3l4 9-4 9"/><path d="M12 5v14"/></svg></span>
+        <span class="logo-text">WebDev</span>
+      </a>
+      <ul class="nav-list">
+        <li><a href="index.html" data-nav="home" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></span><span class="nav-label">Главная</span></a></li>
+        <li><a href="theory.html" data-nav="theory" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M8 7h8M8 11h6M8 15h4"/></svg></span><span class="nav-label">Теория</span></a></li>
+        <li><a href="tests.html" data-nav="tests" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span><span class="nav-label">Тесты</span></a></li>
+        <li><a href="lessons.html" data-nav="lessons" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span><span class="nav-label">Уроки</span></a></li>
+        <li><a href="help.html" data-nav="help" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 115.83 1c-.33.95-1.32 1.36-1.82 1.75A1.8 1.8 0 0012.5 13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><span class="nav-label">Справка</span></a></li>
+        <li><a href="cabinet.html" data-nav="cabinet" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="nav-label">Кабинет</span></a></li>
+      </ul>
+      <div class="nav-right">
+        <span class="auth-nav-wrap" id="auth-nav"></span>
+        <button type="button" class="theme-toggle" aria-label="Тема">
+          <span class="theme-toggle-icon theme-icon-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+          <span class="theme-toggle-icon theme-icon-light" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+          <span class="theme-toggle-text">Тёмная</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main content-page help-page">
+    <header class="help-header">
+      <p class="help-badge">Для обучающихся · Роль «пользователь»</p>
+      <h1>Справочник по сайту</h1>
+      <div class="page-intro">
+        <aside class="page-guide" aria-label="Краткий обзор справки">
+          <p class="page-guide-kicker">С чего начать</p>
+          <ol class="page-guide-list">
+            <li><strong>Сайт</strong> — теория, практические уроки, тесты и личный кабинет в одном потоке.</li>
+            <li><strong>Вход</strong> — аккаунт нужен, чтобы прогресс и результаты хранились на сервере.</li>
+            <li><strong>Кабинет</strong> — статистика по урокам и тестам после авторизации.</li>
+            <li><strong>Ниже</strong> — оглавление разделов и ответы на частые вопросы.</li>
+          </ol>
+        </aside>
+      </div>
+    </header>
+
+    <section class="help-section help-section-toc" aria-labelledby="help-toc-title">
+      <h2 id="help-toc-title" class="help-section-title">Быстрый переход по разделам</h2>
+      <div class="help-toc-grid">
+        <a href="#nav" class="help-toc-card">
+          <h3>1. Навигация по сайту</h3>
+          <p>Что означают пункты верхнего меню и как быстро перейти к нужному разделу.</p>
+        </a>
+        <a href="#auth" class="help-toc-card">
+          <h3>2. Аккаунт и вход</h3>
+          <p>Зачем регистрироваться, как войти и что даёт личный кабинет.</p>
+        </a>
+        <a href="#lessons" class="help-toc-card">
+          <h3>3. Интерактивные уроки</h3>
+          <p>Как работать в редакторе кода, запускать пример и отмечать уроки пройденными.</p>
+        </a>
+        <a href="#theory" class="help-toc-card">
+          <h3>4. Теория</h3>
+          <p>Как пользоваться теоретическими материалами и переходить к связанным тестам и урокам.</p>
+        </a>
+        <a href="#tests" class="help-toc-card">
+          <h3>5. Тесты и результаты</h3>
+          <p>Как запускать тесты, смотреть баллы и повторно проходить задания.</p>
+        </a>
+        <a href="#ui" class="help-toc-card">
+          <h3>6. Внешний вид и удобство</h3>
+          <p>Тёмная и светлая тема, адаптация под телефон и полезные советы.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="help-section" id="nav" aria-labelledby="help-nav-title">
+      <h2 id="help-nav-title" class="help-section-title">1. Верхнее меню и разделы сайта</h2>
+      <div class="help-section-body">
+        <div class="help-columns">
+          <div class="help-col">
+            <h3>Основные пункты меню</h3>
+            <ul class="help-list">
+              <li><strong>Главная</strong> — краткое описание курса, быстрые ссылки на разделы и часто задаваемые вопросы.</li>
+              <li><strong>Теория</strong> — справочник по HTML, CSS и JavaScript в виде тематических карточек и отдельных страниц.</li>
+              <li><strong>Уроки</strong> — интерактивные задания с редактором кода и проверкой результата прямо в браузере.</li>
+              <li><strong>Тесты</strong> — проверочные работы по темам; результаты сохраняются для авторизованных пользователей.</li>
+              <li><strong>Справка</strong> — эта страница с пояснениями по работе сайта.</li>
+            </ul>
+          </div>
+          <div class="help-col">
+            <h3>Блок аккаунта справа</h3>
+            <ul class="help-list">
+              <li><strong>Войти / Регистрация</strong> — появляются, если вы ещё не авторизованы.</li>
+              <li><strong>Личный кабинет</strong> — становится доступен после входа и показывает ваш прогресс.</li>
+              <li><strong>Выйти</strong> — завершает сессию на этом устройстве и в этом браузере.</li>
+            </ul>
+            <p class="help-note">Административный раздел (<strong>«Админка»</strong>) относится к роли администратора. Обычному пользователю он не нужен для прохождения курса.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="help-section" id="auth" aria-labelledby="help-auth-title">
+      <h2 id="help-auth-title" class="help-section-title">2. Аккаунт, вход и личный кабинет</h2>
+      <div class="help-section-body">
+        <div class="help-columns">
+          <div class="help-col">
+            <h3>Зачем нужен аккаунт</h3>
+            <ul class="help-list">
+              <li>Сохраняется <strong>история пройденных уроков</strong>.</li>
+              <li>Фиксируются <strong>результаты тестов</strong> (баллы и факт прохождения).</li>
+              <li>Можно продолжать обучение с другого устройства, если используется серверная версия сайта.</li>
+            </ul>
+          </div>
+          <div class="help-col">
+            <h3>Как войти или зарегистрироваться</h3>
+            <ol class="help-list help-list-ol">
+              <li>Нажмите <strong>«Войти»</strong> в правой части шапки.</li>
+              <li>На странице входа выберите вкладку <strong>«Вход»</strong> или <strong>«Регистрация»</strong>.</li>
+              <li>Укажите логин и пароль и нажмите кнопку отправки формы.</li>
+            </ol>
+            <p class="help-note">После успешного входа вы автоматически попадаете в <strong>личный кабинет</strong>, где виден общий прогресс.</p>
+          </div>
+        </div>
+        <div class="help-inline-card">
+          <h3>Что показывает личный кабинет</h3>
+          <ul class="help-list">
+            <li>Общее число пройденных тестов и сумму набранных баллов.</li>
+            <li>Количество завершённых интерактивных уроков.</li>
+            <li>Список уроков и тестов с датами последнего прохождения.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="help-section" id="lessons" aria-labelledby="help-lessons-title">
+      <h2 id="help-lessons-title" class="help-section-title">3. Интерактивные уроки</h2>
+      <div class="help-section-body">
+        <div class="help-columns">
+          <div class="help-col">
+            <h3>Страница «Уроки»</h3>
+            <ul class="help-list">
+              <li>В верхней части страницы — <strong>краткое описание</strong> и принципы работы редактора.</li>
+              <li>Ниже — <strong>карточки уроков</strong> по HTML/вёрстке и JavaScript.</li>
+              <li>На карточке видно название, краткое описание и статус прохождения.</li>
+            </ul>
+          </div>
+          <div class="help-col">
+            <h3>Работа в редакторе</h3>
+            <ul class="help-list">
+              <li>В левой части — <strong>задание и шаги урока</strong>.</li>
+              <li>Справа — <strong>редактор кода</strong> и панель результата.</li>
+              <li>Кнопка <strong>«Запустить»</strong> обновляет превью с вашим HTML/CSS/JS.</li>
+              <li>Кнопка <strong>«Проверить»</strong> сверяет результат с условиями задания.</li>
+              <li>Кнопка <strong>«Отметить урок пройденным»</strong> сохраняет факт прохождения в вашей статистике.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="help-inline-card">
+          <h3>Рекомендации по работе с уроками</h3>
+          <ul class="help-list">
+            <li>Читайте задание внимательно, обращая внимание на примеры кода и подсказки.</li>
+            <li>Не копируйте код целиком — лучше набирать его вручную для тренировки.</li>
+            <li>Меняйте части кода и наблюдайте, как это влияет на результат справа.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="help-section" id="theory" aria-labelledby="help-theory-title">
+      <h2 id="help-theory-title" class="help-section-title">4. Теоретический раздел</h2>
+      <div class="help-section-body">
+        <div class="help-columns">
+          <div class="help-col">
+            <h3>Карточки тем</h3>
+            <ul class="help-list">
+              <li>Каждая карточка — отдельная тема по HTML, CSS или JavaScript.</li>
+              <li>Сверху отображается категория (<strong>HTML и вёрстка</strong> или <strong>Frontend (JS)</strong>).</li>
+              <li>Краткое описание помогает понять, о чём идёт речь, до открытия полной статьи.</li>
+            </ul>
+          </div>
+          <div class="help-col">
+            <h3>Полная страница темы</h3>
+            <ul class="help-list">
+              <li>Содержит текст с примерами, заголовками и блоками кода.</li>
+              <li>Внизу страницы могут быть кнопки для перехода к <strong>связанному тесту</strong> или <strong>интерактивному уроку</strong>.</li>
+              <li>Рекомендуется сначала прочитать теорию, затем пройти тест и при необходимости выполнить практический урок.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="help-section" id="tests" aria-labelledby="help-tests-title">
+      <h2 id="help-tests-title" class="help-section-title">5. Тесты и проверка знаний</h2>
+      <div class="help-section-body">
+        <div class="help-columns">
+          <div class="help-col">
+            <h3>Список тестов</h3>
+            <ul class="help-list">
+              <li>На странице «Тесты» отображаются карточки с названием и направлением (HTML или JS).</li>
+              <li>Для авторизованных пользователей виден <strong>статус прохождения</strong> и набранные баллы.</li>
+              <li>Кнопка на карточке открывает страницу теста с вопросами.</li>
+            </ul>
+          </div>
+          <div class="help-col">
+            <h3>Прохождение теста</h3>
+            <ol class="help-list help-list-ol">
+              <li>Последовательно выберите ответы на вопросы.</li>
+              <li>Нажмите кнопку отправки ответа/подведения итогов.</li>
+              <li>Изучите итоговый результат: количество правильных ответов и общий балл.</li>
+            </ol>
+            <p class="help-note">Если результат вас не устраивает, тест можно пройти повторно — это хороший способ закрепить материал.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="help-section" id="ui" aria-labelledby="help-ui-title">
+      <h2 id="help-ui-title" class="help-section-title">6. Внешний вид, устройство и полезные советы</h2>
+      <div class="help-section-body">
+        <div class="help-columns">
+          <div class="help-col">
+            <h3>Тёмная и светлая тема</h3>
+            <ul class="help-list">
+              <li>Переключатель темы находится в правой части шапки.</li>
+              <li>Выбранная тема сохраняется в браузере и применяется ко всем страницам.</li>
+              <li>Если вы открываете сайт на другом устройстве, тему можно переключить заново.</li>
+            </ul>
+          </div>
+          <div class="help-col">
+            <h3>Работа на разных устройствах</h3>
+            <ul class="help-list">
+              <li>Сайт адаптирован под <strong>ноутбуки, планшеты и телефоны</strong>.</li>
+              <li>На узких экранах верхнее меню уплотняется, а содержимое страниц остаётся читаемым.</li>
+              <li>Для работы в интерактивном редакторе удобнее использовать устройство с физической клавиатурой.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="help-inline-card">
+          <h3>Если что-то пошло не так</h3>
+          <ul class="help-list">
+            <li>Попробуйте <strong>обновить страницу</strong> и повторно выполнить действие.</li>
+            <li>Убедитесь, что вы <strong>вошли в аккаунт</strong>, если не видите прогресс в личном кабинете.</li>
+            <li>При работе с локальной версией (без сервера) потребуется файл базы данных <strong>diplom.db</strong> — об этом говорится в технических инструкциях к проекту.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="footer-logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3L4 12l4 9"/><path d="M16 3l4 9-4 9"/><path d="M12 5v14"/>
+            </svg>
+          </span>
+          <span class="footer-logo-text">WebDev</span>
+        </div>
+        <p class="footer-tagline">Учебный мини‑сервис по основам веб‑разработки.</p>
+      </div>
+      <div class="footer-contacts">
+        <p class="footer-contacts-title">Связаться с автором</p>
+        <a href="mailto:sidelnikoff@gmail.com" class="footer-contact-link">sidelnikoff@gmail.com</a>
+        <span class="footer-contact-link">@what_is_creator_desire в Telegram</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© WebDev, учебный проект.</span>
+      <a href="privacy.html" class="footer-legal-link">Политика обработки персональных данных</a>
+    </div>
+  </footer>
+
+  <script src="js/sqlite-db.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
+

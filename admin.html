@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Админка — WebDev</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <script>
+  (function(){ try { var q=window.location.search,p=new URLSearchParams(q),t=p.get('theme')||localStorage.getItem('webdev_theme'); t=(t==='light'||t==='dark')?t:'dark'; localStorage.setItem('webdev_theme',t); document.documentElement.setAttribute('data-theme',t); document.body.setAttribute('data-theme',t); } catch(e){} })();
+  </script>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo logo-icon"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3L4 12l4 9"/><path d="M16 3l4 9-4 9"/><path d="M12 5v14"/></svg></span><span class="logo-text">WebDev</span></a>
+      <ul class="nav-list">
+        <li><a href="index.html" data-nav="home" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></span><span class="nav-label">Главная</span></a></li>
+        <li><a href="theory.html" data-nav="theory" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M8 7h8M8 11h6M8 15h4"/></svg></span><span class="nav-label">Теория</span></a></li>
+        <li><a href="tests.html" data-nav="tests" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span><span class="nav-label">Тесты</span></a></li>
+        <li><a href="lessons.html" data-nav="lessons" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span><span class="nav-label">Уроки</span></a></li>
+        <li><a href="help.html" data-nav="help" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 115.83 1c-.33.95-1.32 1.36-1.82 1.75A1.8 1.8 0 0012.5 13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><span class="nav-label">Справка</span></a></li>
+        <li><a href="cabinet.html" data-nav="cabinet" class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="nav-label">Кабинет</span></a></li>
+      </ul>
+      <div class="nav-right">
+        <span class="auth-nav-wrap" id="auth-nav"></span>
+        <button type="button" class="theme-toggle" aria-label="Тема">
+          <span class="theme-toggle-icon theme-icon-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+          <span class="theme-toggle-icon theme-icon-light" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+          <span class="theme-toggle-text">Тёмная</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main content-page admin-page">
+    <div class="admin-header">
+      <h1>Панель администратора</h1>
+      <p class="admin-subtitle">Темы теории (к ним привязываются тесты), интерактивные уроки и тесты</p>
+    </div>
+    <p id="admin-denied" class="admin-denied admin-message" style="display:none;">Доступ только для администратора. <a href="login.html">Войти</a></p>
+    <div id="admin-content" style="display:none;">
+      <nav class="admin-tabs" id="admin-tabs" aria-label="Разделы админки">
+        <button type="button" class="admin-tab active" data-panel="theory">📖 Темы теории</button>
+        <button type="button" class="admin-tab" data-panel="lessons">📚 Интерактивные уроки</button>
+        <button type="button" class="admin-tab" data-panel="tests">✓ Тесты</button>
+      </nav>
+
+      <div id="admin-panel-theory" class="admin-panel active">
+      <div class="admin-sections">
+        <section class="admin-section admin-section-card">
+          <h2 class="admin-section-title"><span class="admin-section-icon">📖</span> Новая тема теории</h2>
+          <p class="admin-form-hint">Тема появляется на странице «Теория». К каждой теме привязывается тест (и по желанию — интерактивный урок).</p>
+          <form id="admin-form-theory" class="admin-form">
+            <label class="auth-label">Название темы <input type="text" name="title" required placeholder="Название темы теории"></label>
+            <label class="auth-label">Краткое описание <input type="text" name="shortDesc" placeholder="Кратко, что в теме"></label>
+            <label class="auth-label">Категория
+              <select name="category">
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="js">JavaScript</option>
+              </select>
+            </label>
+            <label class="auth-label">Контент (HTML) <textarea name="content" rows="8" placeholder="Текст темы в HTML: &lt;p&gt;, &lt;h2&gt;, &lt;code&gt; и т.д."></textarea></label>
+            <label class="auth-label">Привязать тест
+              <select name="testId" id="admin-theory-test-select">
+                <option value="">— Выберите тест —</option>
+              </select>
+            </label>
+            <label class="auth-label">Привязать интерактивный урок (необязательно)
+              <select name="lessonId" id="admin-theory-lesson-select">
+                <option value="">— Не привязывать —</option>
+              </select>
+            </label>
+            <p id="admin-theory-msg" class="auth-error"></p>
+            <button type="submit" class="btn btn-primary">Добавить тему теории</button>
+          </form>
+        </section>
+      </div>
+      <div class="admin-sections admin-existing-section">
+        <section class="admin-section admin-section-card">
+          <h2 class="admin-section-title"><span class="admin-section-icon">📖</span> Темы теории</h2>
+          <p class="admin-form-hint">Изменить привязку теста или интерактивного урока к теме. Удаление удаляет только тему теории.</p>
+          <ul id="admin-theory-list" class="admin-entity-list"></ul>
+        </section>
+      </div>
+      </div>
+
+      <div id="admin-panel-lessons" class="admin-panel">
+      <div class="admin-sections">
+        <section class="admin-section admin-section-card">
+          <h2 class="admin-section-title"><span class="admin-section-icon">📚</span> Новый интерактивный урок</h2>
+          <p class="admin-form-hint">Урок с редактором кода (страница «Уроки»). Тесты привязываются к темам теории, а не к урокам.</p>
+          <form id="admin-form-lesson" class="admin-form">
+            <label class="auth-label">Название <input type="text" name="title" required placeholder="Название урока"></label>
+            <label class="auth-label">Описание <textarea name="description" rows="4" placeholder="Опишите, что нужно сделать в уроке. Просто текст, без HTML."></textarea></label>
+            <label class="auth-label">Направление
+              <select name="branch"><option value="html">HTML и вёрстка</option><option value="js">JavaScript</option></select>
+            </label>
+            <p id="admin-lesson-msg" class="auth-error"></p>
+            <button type="submit" class="btn btn-primary">Добавить интерактивный урок</button>
+          </form>
+        </section>
+      </div>
+      <div class="admin-sections admin-existing-section">
+        <section class="admin-section admin-section-card">
+          <h2 class="admin-section-title"><span class="admin-section-icon">📋</span> Интерактивные уроки</h2>
+          <p class="admin-form-hint">Удаление урока удалит и его шаги, а также записи о прохождении.</p>
+          <ul id="admin-lessons-list" class="admin-entity-list"></ul>
+        </section>
+      </div>
+      </div>
+
+      <div id="admin-panel-tests" class="admin-panel">
+      <div class="admin-sections">
+        <section class="admin-section admin-section-card">
+          <h2 class="admin-section-title"><span class="admin-section-icon">✓</span> Новый тест</h2>
+          <p class="admin-form-hint">Название и вопросы. ID теста создаётся автоматически из названия.</p>
+          <form id="admin-form-test" class="admin-form">
+            <label class="auth-label">Название <input type="text" name="title" required placeholder="Название теста"></label>
+            <label class="auth-label">Направление
+              <select name="branch"><option value="html">HTML</option><option value="js">JavaScript</option></select>
+            </label>
+            <div class="admin-test-questions-block">
+              <h3 class="admin-subsection-title">Вопросы</h3>
+              <div id="admin-questions-list" class="admin-questions-list"></div>
+              <div class="admin-add-question-form">
+                <label class="auth-label">Текст вопроса <input type="text" id="admin-q-text" placeholder="Вопрос"></label>
+                <label class="auth-label">Вариант 1 <input type="text" id="admin-q-opt1" placeholder="Ответ 1"></label>
+                <label class="auth-label">Вариант 2 <input type="text" id="admin-q-opt2" placeholder="Ответ 2"></label>
+                <label class="auth-label">Вариант 3 <input type="text" id="admin-q-opt3" placeholder="Ответ 3 (необяз.)"></label>
+                <label class="auth-label">Вариант 4 <input type="text" id="admin-q-opt4" placeholder="Ответ 4 (необяз.)"></label>
+                <label class="auth-label">Правильный ответ
+                  <select id="admin-q-correct">
+                    <option value="0">1</option>
+                    <option value="1">2</option>
+                    <option value="2">3</option>
+                    <option value="3">4</option>
+                  </select>
+                </label>
+                <button type="button" class="btn btn-secondary" id="admin-add-question-btn">Добавить вопрос</button>
+              </div>
+            </div>
+            <p id="admin-test-msg" class="auth-error"></p>
+            <button type="submit" class="btn btn-primary" id="admin-submit-test-btn">Создать тест</button>
+          </form>
+        </section>
+      </div>
+      <div class="admin-sections admin-existing-section">
+        <section class="admin-section admin-section-card">
+          <h2 class="admin-section-title"><span class="admin-section-icon">📋</span> Тесты</h2>
+          <p class="admin-form-hint">Удаление теста удалит все вопросы и результаты прохождений.</p>
+          <ul id="admin-tests-list" class="admin-entity-list"></ul>
+        </section>
+      </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="footer-logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3L4 12l4 9"/><path d="M16 3l4 9-4 9"/><path d="M12 5v14"/>
+            </svg>
+          </span>
+          <span class="footer-logo-text">WebDev</span>
+        </div>
+        <p class="footer-tagline">Учебный мини‑сервис по основам веб‑разработки.</p>
+      </div>
+      <div class="footer-contacts">
+        <p class="footer-contacts-title">Связаться с автором</p>
+        <a href="mailto:sidelnikoff@gmail.com" class="footer-contact-link">sidelnikoff@gmail.com</a>
+        <span class="footer-contact-link">@what_is_creator_desire в Telegram</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© WebDev, учебный проект.</span>
+      <a href="privacy.html" class="footer-legal-link">Политика обработки персональных данных</a>
+    </div>
+  </footer>
+
+  <script src="js/sqlite-db.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/auth-guard.js"></script>
+  <script>
+  (function () {
+    var denied = document.getElementById('admin-denied');
+    var content = document.getElementById('admin-content');
+    var lessonsListEl = document.getElementById('admin-lessons-list');
+    var testsListEl = document.getElementById('admin-tests-list');
+    var theoryListEl = document.getElementById('admin-theory-list');
+    var lessonTestSelect = document.getElementById('admin-lesson-test-select');
+    var theoryTestSelect = document.getElementById('admin-theory-test-select');
+    var theoryLessonSelect = document.getElementById('admin-theory-lesson-select');
+
+    function switchAdminPanel(panelId) {
+      var panels = content && content.querySelectorAll('.admin-panel');
+      var tabs = content && content.querySelectorAll('.admin-tab');
+      if (!panels || !tabs) return;
+      panels.forEach(function (p) { p.classList.toggle('active', p.id === 'admin-panel-' + panelId); });
+      tabs.forEach(function (t) { t.classList.toggle('active', t.getAttribute('data-panel') === panelId); });
+      if (typeof history !== 'undefined' && history.replaceState) history.replaceState(null, '', '#' + panelId);
+    }
+
+    function setupAdminTabs() {
+      var tabs = document.getElementById('admin-tabs');
+      if (!tabs) return;
+      tabs.querySelectorAll('.admin-tab').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var panel = this.getAttribute('data-panel');
+          if (panel) switchAdminPanel(panel);
+        });
+      });
+      var hash = (window.location.hash || '').replace(/^#/, '');
+      if (hash === 'theory' || hash === 'lessons' || hash === 'tests') switchAdminPanel(hash);
+    }
+
+    function escapeHtml(s) {
+      var d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
+    function loadLessons() {
+      if (!window.webdevApi || !window.webdevApi.getLessons) return Promise.resolve([]);
+      return fetch('/api/lessons', { credentials: 'include' })
+        .then(function (r) { return r.json(); })
+        .then(function (data) { return Array.isArray(data) ? data : []; })
+        .catch(function () { return []; });
+    }
+
+    function loadTests() {
+      if (!window.webdevApi || !window.webdevApi.getTests) return Promise.resolve([]);
+      return fetch('/api/tests', { credentials: 'include' })
+        .then(function (r) { return r.json(); })
+        .then(function (data) { return Array.isArray(data) ? data : []; })
+        .catch(function () { return []; });
+    }
+
+    function loadTheory() {
+      if (!window.webdevApi || !window.webdevApi.getTheory) return Promise.resolve([]);
+      return fetch('/api/theory', { credentials: 'include' })
+        .then(function (r) { return r.json(); })
+        .then(function (data) { return Array.isArray(data) ? data : []; })
+        .catch(function () { return []; });
+    }
+
+    function refreshTheoryDropdowns() {
+      Promise.all([loadTests(), loadLessons()]).then(function (arr) {
+        var tests = Array.isArray(arr[0]) ? arr[0] : [];
+        var lessons = Array.isArray(arr[1]) ? arr[1] : [];
+        if (theoryTestSelect) {
+          theoryTestSelect.innerHTML = '<option value="">— Выберите тест —</option>';
+          tests.forEach(function (t) {
+            var opt = document.createElement('option');
+            opt.value = t.id;
+            opt.textContent = t.title + ' (' + t.id + ')';
+            theoryTestSelect.appendChild(opt);
+          });
+        }
+        if (theoryLessonSelect) {
+          theoryLessonSelect.innerHTML = '<option value="">— Не привязывать —</option>';
+          lessons.forEach(function (l) {
+            var opt = document.createElement('option');
+            opt.value = l.id;
+            opt.textContent = l.title + ' (' + l.id + ')';
+            theoryLessonSelect.appendChild(opt);
+          });
+        }
+      });
+    }
+
+    function refreshTestDropdown() {
+      Promise.all([loadLessons(), loadTests()]).then(function (arr) {
+        var lessons = arr[0] || [];
+        var tests = arr[1] || [];
+        var linkedTestIds = new Set((lessons || []).map(function (l) { return l.testId; }).filter(Boolean));
+        var unlinked = (tests || []).filter(function (t) { return !linkedTestIds.has(t.id); });
+        if (!lessonTestSelect) return;
+        lessonTestSelect.innerHTML = '<option value="">— Не привязывать —</option>';
+        unlinked.forEach(function (t) {
+          var opt = document.createElement('option');
+          opt.value = t.id;
+          opt.textContent = t.title + ' (' + t.id + ')';
+          lessonTestSelect.appendChild(opt);
+        });
+      });
+    }
+
+    function refreshTheoryList() {
+      Promise.all([loadTheory(), loadTests(), loadLessons()]).then(function (arr) {
+        var topics = Array.isArray(arr[0]) ? arr[0] : [];
+        var tests = Array.isArray(arr[1]) ? arr[1] : [];
+        var lessons = Array.isArray(arr[2]) ? arr[2] : [];
+        if (!theoryListEl) return;
+        theoryListEl.innerHTML = '';
+        if (topics.length === 0) {
+          theoryListEl.innerHTML = '<li class="admin-entity-empty">Пока нет тем теории. Добавьте тему выше или выполните сидирование БД: <code>node server/seed.js</code></li>';
+          return;
+        }
+        topics.forEach(function (t) {
+          var li = document.createElement('li');
+          li.className = 'admin-entity-item admin-theory-item admin-theory-card';
+          var testSel = document.createElement('select');
+          testSel.className = 'admin-lesson-test-select';
+          testSel.dataset.topicId = t.id;
+          testSel.dataset.field = 'testId';
+          testSel.innerHTML = '<option value="">— Не привязан —</option>';
+          tests.forEach(function (x) {
+            var opt = document.createElement('option');
+            opt.value = x.id;
+            opt.textContent = x.title;
+            if (t.testId === x.id) opt.selected = true;
+            testSel.appendChild(opt);
+          });
+          var lessonSel = document.createElement('select');
+          lessonSel.className = 'admin-lesson-test-select';
+          lessonSel.dataset.topicId = t.id;
+          lessonSel.dataset.field = 'lessonId';
+          lessonSel.innerHTML = '<option value="">— Не привязан —</option>';
+          lessons.forEach(function (l) {
+            var opt = document.createElement('option');
+            opt.value = l.id;
+            opt.textContent = l.title;
+            if (t.lessonId === l.id) opt.selected = true;
+            lessonSel.appendChild(opt);
+          });
+          var saveBtn = document.createElement('button');
+          saveBtn.type = 'button';
+          saveBtn.className = 'btn btn-sm admin-btn-save';
+          saveBtn.textContent = 'Сохранить';
+          saveBtn.dataset.topicId = t.id;
+          var delBtn = document.createElement('button');
+          delBtn.type = 'button';
+          delBtn.className = 'btn btn-sm admin-btn-remove';
+          delBtn.textContent = 'Удалить';
+          delBtn.dataset.id = t.id;
+          delBtn.dataset.type = 'theory';
+          li.innerHTML =
+            '<div class="admin-theory-card-head">' +
+            '<span class="admin-entity-name">' + escapeHtml(t.title) + '</span>' +
+            '<code class="admin-entity-id">' + escapeHtml(t.id) + '</code>' +
+            '</div>' +
+            '<div class="admin-theory-card-links">' +
+            '<label class="admin-theory-card-field"><span>Тест</span><span class="admin-theory-test-slot"></span></label>' +
+            '<label class="admin-theory-card-field"><span>Интерактивный урок</span><span class="admin-theory-lesson-slot"></span></label>' +
+            '</div>' +
+            '<div class="admin-theory-card-actions"></div>';
+          li.querySelector('.admin-theory-test-slot').appendChild(testSel);
+          li.querySelector('.admin-theory-lesson-slot').appendChild(lessonSel);
+          var actions = li.querySelector('.admin-theory-card-actions');
+          actions.appendChild(saveBtn);
+          actions.appendChild(delBtn);
+          theoryListEl.appendChild(li);
+        });
+        theoryListEl.querySelectorAll('.admin-btn-save').forEach(function (btn) {
+          var topicId = btn.getAttribute('data-topic-id');
+          if (!topicId) return;
+          btn.addEventListener('click', function () {
+            var row = this.closest('.admin-theory-item');
+            var testSel = row && row.querySelector('select[data-field="testId"]');
+            var lessonSel = row && row.querySelector('select[data-field="lessonId"]');
+            var testId = (testSel && testSel.value) ? testSel.value.trim() : null;
+            var lessonId = (lessonSel && lessonSel.value) ? lessonSel.value.trim() : null;
+            fetch('/api/admin/theory/' + encodeURIComponent(topicId), {
+              method: 'PUT',
+              credentials: 'include',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ testId: testId || null, lessonId: lessonId || null })
+            })
+              .then(function (r) {
+                if (r.ok) refreshTheoryList();
+                else r.json().then(function (d) { alert((d && d.error) || 'Ошибка'); });
+              })
+              .catch(function () { alert('Ошибка сети'); });
+          });
+        });
+        theoryListEl.querySelectorAll('.admin-btn-remove[data-type="theory"]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var id = this.getAttribute('data-id');
+            if (!id || !confirm('Удалить тему теории «' + id + '»?')) return;
+            fetch('/api/admin/theory/' + encodeURIComponent(id), { method: 'DELETE', credentials: 'include' })
+              .then(function (r) {
+                if (r.ok) refreshTheoryList();
+                else r.json().then(function (d) { alert((d && d.error) || 'Ошибка'); });
+              })
+              .catch(function () { alert('Ошибка сети'); });
+          });
+        });
+      });
+    }
+
+    function refreshLessonsList() {
+      loadLessons().then(function (lessons) {
+        lessons = Array.isArray(lessons) ? lessons : [];
+        if (!lessonsListEl) return;
+        lessonsListEl.innerHTML = '';
+        lessons.forEach(function (l) {
+          var li = document.createElement('li');
+          li.className = 'admin-entity-item admin-lesson-item';
+          var delBtn = document.createElement('button');
+          delBtn.type = 'button';
+          delBtn.className = 'btn btn-sm admin-btn-remove';
+          delBtn.textContent = 'Удалить';
+          delBtn.dataset.id = l.id;
+          delBtn.dataset.type = 'lesson';
+          li.innerHTML = '<span class="admin-entity-name">' + escapeHtml(l.title) + '</span> <code class="admin-entity-id">' + escapeHtml(l.id) + '</code> ';
+          li.appendChild(delBtn);
+          lessonsListEl.appendChild(li);
+        });
+        lessonsListEl.querySelectorAll('.admin-btn-remove[data-type="lesson"]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var id = this.getAttribute('data-id');
+            if (!id || !confirm('Удалить урок «' + id + '»? Будут удалены шаги и записи о прохождении.')) return;
+            fetch('/api/admin/lessons/' + encodeURIComponent(id), { method: 'DELETE', credentials: 'include' })
+              .then(function (r) {
+                if (r.ok) refreshLessonsList();
+                else r.json().then(function (d) { alert((d && d.error) || 'Ошибка'); });
+              })
+              .catch(function () { alert('Ошибка сети'); });
+          });
+        });
+      });
+    }
+
+    function refreshTestsList() {
+      loadTests().then(function (tests) {
+        if (!testsListEl) return;
+        testsListEl.innerHTML = '';
+        (tests || []).forEach(function (t) {
+          var li = document.createElement('li');
+          li.className = 'admin-entity-item';
+          li.innerHTML = '<span class="admin-entity-name">' + escapeHtml(t.title) + '</span> <code class="admin-entity-id">' + escapeHtml(t.id) + '</code> ' +
+            '<button type="button" class="btn btn-sm admin-btn-remove" data-id="' + escapeHtml(t.id) + '" data-type="test">Удалить</button>';
+          testsListEl.appendChild(li);
+        });
+        testsListEl.querySelectorAll('.admin-btn-remove[data-type="test"]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var id = this.getAttribute('data-id');
+            if (!id || !confirm('Удалить тест «' + id + '»? Будут удалены все вопросы и результаты.')) return;
+            fetch('/api/admin/tests/' + encodeURIComponent(id), { method: 'DELETE', credentials: 'include' })
+              .then(function (r) {
+                if (r.ok) { refreshTestsList(); refreshTheoryDropdowns(); }
+                else r.json().then(function (d) { alert((d && d.error) || 'Ошибка'); });
+              })
+              .catch(function () { alert('Ошибка сети'); });
+          });
+        });
+      });
+    }
+
+    function init(user) {
+      if (!user) return;
+      content.style.display = 'block';
+      denied.style.display = 'none';
+
+      function setupTheoryForm() {
+        var form = document.getElementById('admin-form-theory');
+        if (!form) return;
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var msg = document.getElementById('admin-theory-msg');
+          msg.textContent = '';
+          var fd = new FormData(this);
+          var data = {
+            title: (fd.get('title') || '').trim(),
+            shortDesc: (fd.get('shortDesc') || '').trim(),
+            category: fd.get('category') || 'html',
+            content: (fd.get('content') || '').trim() || null,
+            testId: (fd.get('testId') && fd.get('testId').trim()) ? fd.get('testId').trim() : null,
+            lessonId: (fd.get('lessonId') && fd.get('lessonId').trim()) ? fd.get('lessonId').trim() : null
+          };
+          if (!data.title) { msg.textContent = 'Укажите название темы'; return; }
+          fetch('/api/admin/theory', { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+            .then(function (r) {
+              return r.text().then(function (text) {
+                var d;
+                try { d = text ? JSON.parse(text) : {}; } catch (e) { d = {}; }
+                if (r.ok) {
+                  msg.textContent = 'Тема теории добавлена.';
+                  msg.style.color = 'var(--success)';
+                  refreshTheoryList();
+                  refreshTheoryDropdowns();
+                } else {
+                  msg.textContent = (d && d.error) || (d && d.detail) || 'Ошибка ' + r.status;
+                  msg.style.color = '';
+                }
+              });
+            })
+            .catch(function (err) {
+              msg.textContent = 'Ошибка сети: ' + (err && err.message ? err.message : 'неизвестно');
+              msg.style.color = '';
+            });
+        });
+      }
+
+      function setupLessonForm() {
+        document.getElementById('admin-form-lesson').addEventListener('submit', function (e) {
+          e.preventDefault();
+          var msg = document.getElementById('admin-lesson-msg');
+          msg.textContent = '';
+          var fd = new FormData(this);
+          var data = {
+            title: (fd.get('title') || '').trim(),
+            description: (fd.get('description') || '').trim(),
+            branch: fd.get('branch') || 'html',
+            testId: null,
+            template: false,
+            html: '',
+            css: '',
+            js: '',
+            steps: []
+          };
+          if (!data.title) { msg.textContent = 'Укажите название'; return; }
+          if (window.webdevApi) {
+            fetch('/api/admin/lessons', { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+              .then(function (r) {
+                return r.text().then(function (text) {
+                  var d;
+                  try { d = text ? JSON.parse(text) : {}; } catch (e) { d = {}; }
+                  if (r.ok) {
+                    msg.textContent = 'Урок добавлен.';
+                    msg.style.color = 'var(--success)';
+                    refreshLessonsList();
+                  } else {
+                    msg.textContent = (d && d.error) || (d && d.detail) || 'Ошибка ' + r.status;
+                    msg.style.color = '';
+                  }
+                });
+              })
+              .catch(function (err) {
+                msg.textContent = 'Ошибка сети: ' + (err && err.message ? err.message : 'неизвестно');
+                msg.style.color = '';
+              });
+            return;
+          }
+            if (typeof window.webdevDbCreateLesson === 'function' && window.webdevDbCreateLesson(data)) {
+            msg.textContent = 'Урок добавлен.'; msg.style.color = 'var(--success)'; refreshLessonsList();
+          } else { msg.textContent = 'Ошибка или такой ID уже есть.'; msg.style.color = ''; }
+        });
+      }
+
+      var adminQuestionsList = [];
+
+      function setupTestForm() {
+        var form = document.getElementById('admin-form-test');
+        var listEl = document.getElementById('admin-questions-list');
+        var addBtn = document.getElementById('admin-add-question-btn');
+
+        function refreshQuestionsList() {
+          listEl.innerHTML = '';
+          adminQuestionsList.forEach(function (q, i) {
+            var item = document.createElement('div');
+            item.className = 'admin-question-item';
+            item.innerHTML = '<span class="admin-question-num">' + (i + 1) + '.</span> ' + escapeHtml(q.question) + ' <span class="admin-question-meta">— правильный: ' + (q.correct + 1) + '</span> <button type="button" class="admin-question-remove" data-index="' + i + '">✕</button>';
+            listEl.appendChild(item);
+          });
+          listEl.querySelectorAll('.admin-question-remove').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var idx = parseInt(this.getAttribute('data-index'), 10);
+              adminQuestionsList.splice(idx, 1);
+              refreshQuestionsList();
+            });
+          });
+        }
+        function escapeHtml(s) {
+          var div = document.createElement('div');
+          div.textContent = s;
+          return div.innerHTML;
+        }
+
+        if (addBtn) {
+          addBtn.addEventListener('click', function () {
+            var text = (document.getElementById('admin-q-text') && document.getElementById('admin-q-text').value || '').trim();
+            var o1 = (document.getElementById('admin-q-opt1') && document.getElementById('admin-q-opt1').value || '').trim();
+            var o2 = (document.getElementById('admin-q-opt2') && document.getElementById('admin-q-opt2').value || '').trim();
+            var o3 = (document.getElementById('admin-q-opt3') && document.getElementById('admin-q-opt3').value || '').trim();
+            var o4 = (document.getElementById('admin-q-opt4') && document.getElementById('admin-q-opt4').value || '').trim();
+            var correct = parseInt(document.getElementById('admin-q-correct') && document.getElementById('admin-q-correct').value, 10) || 0;
+            if (!text || !o1 || !o2) {
+              var msgEl = document.getElementById('admin-test-msg');
+              if (msgEl) { msgEl.textContent = 'Введите вопрос и минимум 2 варианта ответа'; msgEl.style.color = ''; }
+              return;
+            }
+            var options = [o1, o2];
+            if (o3) options.push(o3);
+            if (o4) options.push(o4);
+            if (correct >= options.length) correct = options.length - 1;
+            adminQuestionsList.push({ question: text, options: options, correct: correct });
+            refreshQuestionsList();
+            document.getElementById('admin-q-text').value = '';
+            document.getElementById('admin-q-opt1').value = '';
+            document.getElementById('admin-q-opt2').value = '';
+            document.getElementById('admin-q-opt3').value = '';
+            document.getElementById('admin-q-opt4').value = '';
+            document.getElementById('admin-test-msg').textContent = '';
+          });
+        }
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var msgEl = document.getElementById('admin-test-msg');
+          msgEl.textContent = '';
+          var title = (form.querySelector('input[name="title"]') && form.querySelector('input[name="title"]').value || '').trim();
+          var branch = form.querySelector('select[name="branch"]') && form.querySelector('select[name="branch"]').value || 'html';
+          if (!title) { msgEl.textContent = 'Укажите название теста'; return; }
+          if (adminQuestionsList.length === 0) { msgEl.textContent = 'Добавьте хотя бы один вопрос'; return; }
+          var payload = { title: title, branch: branch, questions: adminQuestionsList };
+          if (window.webdevApi) {
+            fetch('/api/admin/tests', { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+              .then(function (r) { return r.json().then(function (d) {
+                if (r.ok) { msgEl.textContent = 'Тест создан.'; msgEl.style.color = 'var(--success)'; adminQuestionsList = []; refreshQuestionsList(); refreshTestsList(); refreshTheoryDropdowns(); }
+                else { msgEl.textContent = (d && d.error) || 'Ошибка'; msgEl.style.color = ''; }
+              }); })
+              .catch(function () { msgEl.textContent = 'Ошибка сети'; msgEl.style.color = ''; });
+            return;
+          }
+          if (typeof window.webdevDbCreateTest === 'function' && window.webdevDbCreateTest(payload)) {
+            msgEl.textContent = 'Тест создан.'; msgEl.style.color = 'var(--success)';
+            adminQuestionsList = []; refreshQuestionsList(); refreshTestsList(); refreshTheoryDropdowns();
+          } else { msgEl.textContent = 'Ошибка или такой ID уже есть.'; msgEl.style.color = ''; }
+        });
+      }
+
+      if (window.webdevApi) {
+        setupAdminTabs();
+        refreshTheoryDropdowns();
+        refreshLessonsList();
+        refreshTheoryList();
+        refreshTestsList();
+        setupTheoryForm();
+        setupLessonForm();
+        setupTestForm();
+        return;
+      }
+      if (typeof window.initWebdevDb !== 'function') {
+        content.style.display = 'none';
+        denied.style.display = 'block';
+        denied.innerHTML = 'Загрузите сайт по http (npx serve) и положите diplom.db в корень.';
+        return;
+      }
+      window.initWebdevDb().then(function (ok) {
+        setupLessonForm();
+        setupTestForm();
+      });
+    }
+
+    webdevAuthGuard({ requireAdmin: true, onAllow: init });
+  })();
+  </script>
+</body>
+</html>
